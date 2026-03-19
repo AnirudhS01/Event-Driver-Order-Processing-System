@@ -100,7 +100,7 @@ module.exports.GetOrderbyIdController = async (req, res) => {
             })
         }
 
-        await setCache(cachkey, order)
+        await setCache(cachekey, order)
 
         return res.status(200).json({
             success: true,
