@@ -52,7 +52,7 @@ A microservices-based order processing system using Node.js, Kafka, Redis, and M
 - **Body**:
   ```json
   {
-    "user_name": "Antigravity User",
+    "user_name": "Joe Doe",
     "user_phone": "9876543210",
     "user_email": "user@example.com",
     "total_cost": 150.50,
@@ -72,7 +72,7 @@ The **Notification Service** acts as a simulator. When an order is placed, inste
 
 ```text
 [CUSTOMER SIMULATION] 🔔 SMS received by 9876543210:
-"Hi Antigravity User! Your order for Mechanical Keyboard, USB-C Cable has been placed successfully. Total: $150.50."
+"Hi Joe Doe! Your order for Mechanical Keyboard, USB-C Cable has been placed successfully. Total: $150.50."
 ```
 
 ## Service Configuration
