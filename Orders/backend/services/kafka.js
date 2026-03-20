@@ -2,7 +2,7 @@ const { Kafka } = require("kafkajs")
 
 const kafka = new Kafka({
     clientId: "order-service",
-    brokers: ["localhost:9092"]
+    brokers: ["kafka:9092"]
 })
 // unlike python where we do producer = Producer(config) , its different in node
 
@@ -35,4 +35,4 @@ const deliveryReport = (topic, message) => {
     console.log(`Message: ${JSON.stringify(message)}`)
 }
 // same logic where i learnt dict-json-bytes , here javascript object(order)-json and internal converting to bytes
-module.exports = { connectProducer, sendOrderEvent, deliveryReport}
+module.exports = { connectProducer, sendOrderEvent, deliveryReport }

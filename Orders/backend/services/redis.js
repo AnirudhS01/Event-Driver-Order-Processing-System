@@ -2,7 +2,7 @@ const Redis = require("redis");
 
 
 const redisclient = Redis.createClient({
-    url: "redis://localhost:6379"
+    url: "redis://redis:6379"
 })
 
 redisclient.on("error", (err) => {
@@ -11,25 +11,23 @@ redisclient.on("error", (err) => {
 
 
 const connectRedis = async () => {
-    try{
+    try {
         await redisclient.connect();
         console.log("Connected to redis successfully")
 
     }
-    catch(err)
-    {
+    catch (err) {
         console.log("Connection failed", err)
     }
 };
 
 
 const setCache = async (key, data) => {
-    try{
-        await redisclient.set(key,JSON.stringify(data), {
+    try {
+        await redisclient.set(key, JSON.stringify(data), {
             EX: 3600
-        }) 
-    }catch(err)
-    {
+        })
+    } catch (err) {
         console.log("Could not cache the order details", err)
     }
 };

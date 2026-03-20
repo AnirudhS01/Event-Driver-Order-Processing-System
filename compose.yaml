@@ -46,7 +46,24 @@ services:
       - redis_data:/data
     restart: unless-stopped
 
+  orders:
+    build: ./Orders
+    container_name: orders-service
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://admin:admin@mongodb:27017
+      - PORT=3000
+    depends_on:
+      - mongodb
+      - redis
+      - kafka
 
+  notification:
+    build: ./Notifcation
+    container_name: notification-service
+    depends_on:
+      - kafka
 
 volumes:
   kafka_kraft:

@@ -2,7 +2,7 @@ const { Kafka } = require("kafkajs")
 
 const kafka = new Kafka({
   clientId: "notification-service",
-  brokers: ["localhost:9092"]
+  brokers: ["kafka:9092"]
 })
 
 const consumer = kafka.consumer({
@@ -23,8 +23,8 @@ const run = async () => {
       eachMessage: async ({ message }) => {
         try {
           const order = JSON.parse(message.value.toString())
-          console.log("New Order Event Received")
-          console.log(order)
+          console.log(`[CUSTOMER SIMULATION] 🔔 SMS received by ${order.user_phone}:`)
+          console.log(`"Hi ${order.user_name}! Your order for ${order.items.join(', ')} has been placed successfully. Total: $${order.total_cost}."`)
         } catch (err) {
           console.error("Message processing failed:", err)
         }
